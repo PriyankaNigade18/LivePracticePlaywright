@@ -1,0 +1,119 @@
+Line-by-line explanation
+🔹 test.only(...)
+test.only("Automate slider", async ({ page }) => {
+
+
+Runs only this test
+
+page is the browser tab Playwright gives you
+
+🔹 Open the website
+await page.goto("https://jqueryui.com/slider/");
+
+
+Opens the slider demo page
+
+4️⃣ Why iframe is important
+
+The slider is not directly on the page
+It is inside an iframe.
+
+Think of an iframe as a page inside a page.
+
+🔹 Switch into iframe
+const frame = page.frameLocator(".demo-frame");
+
+
+.demo-frame is the iframe’s class
+
+Now frame acts like a page but inside the iframe
+
+5️⃣ Locate the slider handle
+const slider = frame.locator(".ui-slider-handle");
+
+
+This is the round draggable circle
+
+We must drag THIS element
+
+6️⃣ Get slider position (very important)
+const box = await slider.boundingBox();
+
+
+This gives us the exact location of the slider on the screen.
+
+Example:
+
+box = {
+  x: 450,
+  y: 320,
+  width: 20,
+  height: 20
+}
+
+
+Meaning:
+
+x → horizontal position
+
+y → vertical position
+
+width / height → size of slider handle
+
+7️⃣ Move mouse to the CENTER of the slider
+await page.mouse.move(
+  box.x + box.width / 2,
+  box.y + box.height / 2
+);
+
+
+Why?
+
+Mouse must be exactly on the slider
+
++ width/2 moves from left edge → center
+
++ height/2 moves from top edge → center
+
+📌 Without this, drag won’t work!
+
+8️⃣ Press and hold mouse button
+await page.mouse.down();
+
+
+Same as left mouse button down
+
+This is how drag starts
+
+9️⃣ Drag slider to the right
+await page.mouse.move(
+  box.x + 200,
+  box.y + box.height / 2,
+  { steps: 10 }
+);
+
+
+box.x + 200 → move mouse 200 pixels to the right
+
+steps: 10 → smooth movement (more realistic)
+
+Think:
+
+Click → hold → drag right
+
+🔟 Release mouse button
+await page.mouse.up();
+
+
+Releases mouse
+
+Drag is finished
+
+🧠 Simple visualization
+[ O-------------------- ]
+   ↑
+ start
+
+[ --------O----------- ]
+           ↑
+         after drag

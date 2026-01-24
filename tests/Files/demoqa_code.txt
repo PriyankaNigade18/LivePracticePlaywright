@@ -1,0 +1,41 @@
+
+
+describe("Interacting with Form Elements",()=>{
+
+    it("Filling Form", ()=>{
+        cy.visit("https://demoqa.com/automation-practice-form");
+        cy.get("#firstName").type("Sai");
+        cy.get("#lastName").type("Ratnakar");
+        cy.get("#userEmail").type("sairatnakar@gmail.com");
+        cy.get("#gender-radio-1").click({force: true});
+        cy.get("#userNumber").type("1234567891");
+        cy.get("#dateOfBirthInput").click();
+        cy.get(".react-datepicker__month-select").select("February");
+        cy.get(".react-datepicker__year-select").select("1997");
+        cy.get("div[role='option']").eq(14).click();
+        cy.get("div[class$='css-yk16xz-control']>div").eq(1).type("Maths{enter}");
+        cy.get("#hobbies-checkbox-1").click({force: true});
+        cy.get("#uploadPicture").selectFile("C:/Users/SAI RATNAKAR/Downloads/Screenshot 2025-12-23 130452.png");
+        cy.get("textarea[rows='5']").type("Visakhapanam");
+        cy.get("div[aria-hidden='true']").eq(1).click().each(($state)=>{
+                if($state.text().includes("Rajasthan"))
+                {
+                    cy.wrap($state).click();
+                }
+        }); 
+        cy.get("div[class=' css-1wy0on6']").eq(2).click().each((city)=>{
+                if(city.text().includes("Jaipur"))
+                {
+                    cy.wrap(city).click();
+                }
+
+            }); 
+
+        cy.get("#submit").click();
+        cy.get("div[class='modal-title h4']").text().then((message)={
+            // cy.log(message);
+
+        })
+
+    })
+})

@@ -1,0 +1,27 @@
+
+Playwright is end to end testing frameword developed by microsoft in 2020
+
+How to identify elements?
+------------------------------
+Playwright uses locators to identify elements
+
+Locator is address of webelement from webpage
+
+
+Xpath
+==============
+xpath basic syntax
+
+xpath with and or 
+
+xpath with indexing
+
+xpath with method 
+test()
+normalize-space()
+contains()
+starts-with()
+
+
+xpath Axies
+

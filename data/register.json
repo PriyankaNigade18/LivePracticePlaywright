@@ -1,0 +1,16 @@
+[
+    {
+        "firstName":"Alice",
+        "lastName":"smith",
+        "telephone":"896767875",
+        "password":"test123",
+        "subscribeLetter":"Yes"
+    },
+     {
+        "firstName":"Bob",
+        "lastName":"jems",
+        "telephone":"896767875",
+        "password":"test123",
+        "subscribeLetter":"No"
+    }
+]
