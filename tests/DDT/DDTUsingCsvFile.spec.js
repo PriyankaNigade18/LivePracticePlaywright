@@ -4,11 +4,11 @@ import Papa from "papaparse"
 
 function readCsv(filePath)
 {
-const data=fs.readFileSync(filePath,"utf-8");
+const filedata=fs.readFileSync(filePath,"utf-8");
 //header:If true, the first row of parsed data will be interpreted as field names.
 //If true, lines that are completely empty (those which evaluate to an empty string) will be skipped.
 //If true, numeric and boolean data will be converted to their type instead of remaining strings. 
-const parseData=Papa.parse(data,{header:true,skipEmptyLines:true,dynamicTyping:false})
+const parseData=Papa.parse(filedata,{header:true,skipEmptyLines:true,dynamicTyping:false})
 return parseData.data;
 }
 
