@@ -1,3 +1,4 @@
+import { CartPage } from "./CartPage";
 
 export class InventoryPage{
 
@@ -52,5 +53,6 @@ export class InventoryPage{
     async goToCartPage()
     {
         await this.#cartIcon.click();
+        return new CartPage(this.#page);
     }
 }

@@ -1,4 +1,5 @@
 import { InventoryPage } from "./InventoryPage";
+import { CheckoutPage } from "./CheckoutPage";
 
 export class CartPage{
 
@@ -19,23 +20,25 @@ constructor(page)
 
 async getProductName()
 {
-    return await this.#productName;
+    return await this.#productName.innerText();
 }
 
 async doRemoveProduct()
 {
+   let pname=await this.#productName.innerText();
     await this.#removeButton.click();
+    return await pname;
 }
 
 async doContinueShopping()
 {
     await this.#continueShopping.click();
-    return new InventoryPage(page);
+    return new InventoryPage(this.#page);
 }
 
 async doCheckout()
 {
     await this.#checkoutButton.click();
-    return new CheckoutPage(page);
+    return new CheckoutPage(this.#page);
 }
 }

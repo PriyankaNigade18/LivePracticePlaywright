@@ -3,7 +3,7 @@ import {test} from "../fixtures/auth.fixture.js"
 import {LoginPage} from "../pages/LoginPage.js"
 import {expect} from "@playwright/test"
 
-test.describe.only("This is login step",()=>{
+test.describe("This is login step",()=>{
 
     let loginpage;
     test.beforeEach(async({page})=>{
