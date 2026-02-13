@@ -34,6 +34,7 @@ test("Test for cart description",async({page})=>{
    console.log(pname);
    
    await page.waitForTimeout(2000);
+   
 
 })
 

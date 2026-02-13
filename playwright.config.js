@@ -45,7 +45,10 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot:"on",
-    video:"on"
+    video:"on",
+    slowMo: 500,
+    ignoreHTTPSErrors: true
+
   },
   // metadata:{
   //   appUserName:"standard_user",

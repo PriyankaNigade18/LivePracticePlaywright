@@ -19,13 +19,13 @@ constructor(page)
 
 async gotoUrl()
 {
-await this.#page.goto("https://www.saucedemo.com/",{waitUntil:'load',timeout:5000});
+await this.#page.goto("https://www.saucedemo.com/",{waitUntil:'domcontentloaded',waitUntil:'networkidle'});
 await this.#page.waitForTimeout(1000);
 }
 
 async openUrl(baseUrl)
 {
-await this.#page.goto(baseUrl,{waitUntil:'load',timeout:5000});
+await this.#page.goto(baseUrl,{waitUntil:'domcontentloaded'});
 await this.#page.waitForTimeout(1000);
 }
 
